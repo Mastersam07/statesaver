@@ -1,0 +1,6 @@
+{
+  "appTitle": "statesaver",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
