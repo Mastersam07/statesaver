@@ -9,6 +9,7 @@ void main() {
     return MaterialApp(
       home: Scaffold(
         bottomNavigationBar: FABBottomAppBar(
+          selectedIndex: selectedIndex,
           items: [
             FABBottomAppBarItem(iconData: Icons.home, text: 'Home'),
             FABBottomAppBarItem(iconData: Icons.search, text: 'Search'),

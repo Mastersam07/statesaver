@@ -70,3 +70,8 @@ To test state restoration on iOS:
 - Background the app on the phone, e.g. by going back to the home screen.
 - Press the Stop button in Xcode to terminate the app while running in the background.
 - Open the app again on the phone (not via Xcode). It will restart and restore its state.
+
+## Some plot twist
+- Navigation arguments in state restoration must be serializable. Simply put, primitive data types and Map<Primitive, Primitive> are acceptable. Custom classes should be converted to Map<Primitive, Primitive> before passing.
+- Changes applied to your app with hot reload and hot restart are not persisted on the device.
+- To test state restoration, always make sure to fully re-compile your application after making a change.

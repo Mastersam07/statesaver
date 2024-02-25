@@ -12,8 +12,8 @@ class AppHome extends StatefulWidget {
   State<AppHome> createState() => _AppHomeState();
 }
 
-class _AppHomeState extends State<AppHome> {
-  ValueNotifier<int> page = ValueNotifier(0);
+class _AppHomeState extends State<AppHome> with RestorationMixin {
+  final RestorableInt _index = RestorableInt(0);
   List<Widget> children = [
     const HomeView(),
     const Center(child: Text('Statistics')),
@@ -21,18 +21,20 @@ class _AppHomeState extends State<AppHome> {
     const Center(child: Text('Profile')),
   ];
 
-  void _selectedTab(int index) {
-    page.value = index;
+  @override
+  String get restorationId => 'home_page';
+
+  @override
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
+    // Register our property to be saved every time it changes,
+    // and to be restored every time our app is killed by the OS!
+    registerForRestoration(_index, 'nav_bar_index');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ValueListenableBuilder(
-          valueListenable: page,
-          builder: (_, index, __) {
-            return children.elementAt(index);
-          }),
+      body: children.elementAt(_index.value),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: purple,
@@ -40,7 +42,9 @@ class _AppHomeState extends State<AppHome> {
         child: const Icon(IconsaxBold.scan),
       ),
       bottomNavigationBar: FABBottomAppBar(
-        onTabSelected: _selectedTab,
+        key: ValueKey<int>(_index.value),
+        onTabSelected: (i) => setState(() => _index.value = i),
+        selectedIndex: _index.value,
         notchedShape: const CircularNotchedRectangle(),
         selectedColor: purple,
         color: grey,
