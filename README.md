@@ -14,8 +14,8 @@ State restoration is all about saving and restoring an app state quickly after t
 - [ ] Primitive properties
 - [ ] Textfields
 - [ ] Navigation
-    - [ ] Without arguments
-    - [ ] With arguments
+    - [x] Without arguments
+    - [x] With arguments
 - [ ] Scrollables
 - [ ] Root level app widfgets
 - [ ] Dialogs

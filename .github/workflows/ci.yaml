@@ -1,0 +1,46 @@
+name: Test and Build
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  flutter_version: "3.16.0"
+
+jobs:
+  
+  setup-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ runner.tool_cache }}/flutter
+          key: ${{ runner.OS }}-flutter-install-cache-${{ env.flutter_version }}
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.flutter_version }}
+          channel: 'stable'
+      
+      - name: 📦 Install Dependencies
+        run: flutter pub get
+
+      - name: 😵‍💫 Analyze Formatting Errors
+        run: dart format --set-exit-if-changed .
+
+      - name: ✅ Analyze Linter Errors
+        run: flutter analyze .      
+
+      - name: 🧪 Run Test Cases
+        run: flutter test --coverage
+      
+      - name: 🛠️ Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: Mastersam07/statesaver
+          file: ./coverage/lcov.info
