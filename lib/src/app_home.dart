@@ -28,7 +28,6 @@ class _AppHomeState extends State<AppHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEFEFEF),
       body: ValueListenableBuilder(
           valueListenable: page,
           builder: (_, index, __) {

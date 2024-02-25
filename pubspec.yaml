@@ -14,8 +14,8 @@ dependencies:
   ficonsax: ^0.0.3
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
+  intl: ^0.19.0
+  slide_to_act: ^2.0.2
   smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
@@ -26,9 +26,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
-  # Enable generation of localized Strings from arb files.
-  generate: true
 
   assets:
     # Add assets from the images directory to the application.

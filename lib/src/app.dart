@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:statesaver/src/home/transfer.dart';
+import 'package:statesaver/src/utils.dart';
 
 import 'app_home.dart';
+import 'home/summary.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -21,7 +23,30 @@ class MyApp extends StatelessWidget {
       // Define a light and dark color theme. Then, read the user's
       // preferred ThemeMode (light, dark, or system default) from the
       // SettingsController to display the correct theme.
-      theme: ThemeData(useMaterial3: false),
+      theme: ThemeData(
+        useMaterial3: false,
+        scaffoldBackgroundColor: const Color(0xFFEFEFEF),
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Color(0xFF15141F),
+          ),
+          titleTextStyle: TextStyle(
+            color: Color(0xFF15141F),
+          ),
+          backgroundColor: Color(0xFFEFEFEF),
+        ),
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(
+            color: Color(0xFF15141F),
+          ),
+        ),
+        tabBarTheme: TabBarTheme(
+          indicatorSize: TabBarIndicatorSize.label,
+          indicatorColor: const Color(0xFF000000),
+          labelStyle: context.textTheme.labelMedium,
+        ),
+      ),
       darkTheme: ThemeData.dark(useMaterial3: false),
 
       // Define a function to handle named routes in order to support
@@ -33,6 +58,8 @@ class MyApp extends StatelessWidget {
             switch (routeSettings.name) {
               case TransferView.routeName:
                 return const TransferView();
+              case TransferSummary.routeName:
+                return const TransferSummary();
               default:
                 return const AppHome();
             }

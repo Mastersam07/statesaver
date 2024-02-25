@@ -2,10 +2,15 @@ import 'package:ficonsax/ficonsax.dart';
 import 'package:flutter/material.dart';
 import 'package:statesaver/src/utils.dart';
 
+import '../models/debit_card.dart';
+
 class CarouselCard extends StatelessWidget {
   const CarouselCard({
     super.key,
+    required this.card,
   });
+
+  final DebitCard card;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +51,7 @@ class CarouselCard extends StatelessWidget {
                   const Icon(IconsaxBold.card, color: Colors.white, size: 24),
                   const SizedBox(height: 12),
                   Text(
-                    '1234 1234 1234 1234',
+                    card.number ?? '',
                     style: context.textTheme.headlineSmall?.copyWith(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
@@ -71,7 +76,7 @@ class CarouselCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'VISA',
+                    card.type ?? 'VISA',
                     style: context.textTheme.headlineMedium?.copyWith(
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
@@ -82,12 +87,12 @@ class CarouselCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        'Bruce Wayne',
+                        card.name ?? '',
                         style: context.textTheme.bodyMedium
                             ?.copyWith(color: Colors.white),
                       ),
                       Text(
-                        'Exp: 09/24',
+                        'Exp: ${card.expiry}',
                         style: context.textTheme.bodyMedium
                             ?.copyWith(color: Colors.white),
                       ),
