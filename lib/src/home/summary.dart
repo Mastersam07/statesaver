@@ -4,6 +4,7 @@ import 'package:slide_to_act/slide_to_act.dart';
 import 'package:statesaver/src/utils.dart';
 
 import '../models/beneficiary.dart';
+import 'success.dart';
 
 class TransferSummary extends StatelessWidget {
   const TransferSummary({super.key});
@@ -144,7 +145,10 @@ class TransferSummary extends StatelessWidget {
                       color: Colors.white,
                     ),
                     borderRadius: 12,
-                    onSubmit: () async {},
+                    onSubmit: () async {
+                      Navigator.restorablePushReplacementNamed(
+                          context, TranseferSuccess.routeName);
+                    },
                   ),
                   const SizedBox(height: 16),
                 ],

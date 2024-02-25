@@ -3,6 +3,7 @@ import 'package:statesaver/src/home/transfer.dart';
 import 'package:statesaver/src/utils.dart';
 
 import 'app_home.dart';
+import 'home/success.dart';
 import 'home/summary.dart';
 
 /// The Widget that configures your application.
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       // MaterialApp to restore the navigation stack when a user leaves and
       // returns to the app after it has been killed while running in the
       // background.
-      restorationScopeId: 'app',
+      restorationScopeId: 'statesaverapp',
 
       // Define a light and dark color theme. Then, read the user's
       // preferred ThemeMode (light, dark, or system default) from the
@@ -60,6 +61,8 @@ class MyApp extends StatelessWidget {
                 return const TransferView();
               case TransferSummary.routeName:
                 return const TransferSummary();
+              case TranseferSuccess.routeName:
+                return const TranseferSuccess();
               default:
                 return const AppHome();
             }
