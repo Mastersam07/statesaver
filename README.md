@@ -14,6 +14,8 @@ State restoration is all about saving and restoring an app state quickly after t
 - [ ] Primitive properties
 - [ ] Textfields
 - [ ] Navigation
+    - [ ] Without arguments
+    - [ ] With arguments
 - [ ] Scrollables
 - [ ] Root level app widfgets
 - [ ] Dialogs
@@ -21,3 +23,19 @@ State restoration is all about saving and restoring an app state quickly after t
 - [ ] DataTable
 - [ ] Drawer/endDrawer
 - [ ] Bottomsheet
+
+## Table of RestorableProperty
+
+| Type | Nullable Type | Restorable Type | Restorable Nullable Type |
+|------|-------|-------|-------|
+| String | String? | RestorableString | RestorableStringN |
+| int | int? | RestorableInt | RestorableIntN |
+| double | double? | RestorableDouble | RestorableDoubleN |
+| num | num? | RestorableNum | RestorableNumN |
+| bool | bool? | RestorableBool | RestorableBoolN |
+| enum | enum? | RestorableEnum | RestorableEnumN |
+| DateTime | DateTime? | RestorableDateTime | RestorableDateTimeN |
+| TimeOfDay | TimeOfDay? | RestorableTimeOfDay | RestorableTimeOfDayN |
+| Listenable | - | RestorableListenable | - |
+| TextEditingController | - | RestorableTextEditingController | - |
+| Value<T> | - | RestorableValue<T> | - |
